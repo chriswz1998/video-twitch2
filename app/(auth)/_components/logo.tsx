@@ -10,7 +10,7 @@ const fonts = Poppins({
 export const Logo = () => {
     return (
         <div className={'flex flex-col items-center gap-y-4'}>
-            <Image src={'/logoipsum-224.svg'} alt={'Gamehub'} width={'80'} height={'80'} />
+            <Image src={'/logoipsum-224.svg'} alt={'Gamehub'} width={'120'} height={'120'} />
             <div className={cn('flex flex-col items-center', fonts.className)}>
                 <p className="text-xl font-semibold">Chris&apos;s Hub</p>
                 <p className="text-sm text-muted-foreground">let&apos;s play</p>
