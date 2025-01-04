@@ -37,15 +37,18 @@ export const Search = () => {
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={'search'}
                 className={
-                    'rounded-none border-r-none rounded-l focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0'
+                    'rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0'
                 }
             />
-            {value && <X className={'mr-2'} onClick={onClear} />}
-            <Button
-                type="submit"
-                variant={'secondary'}
-                className={'rounded-none rounded-r border border-l-none'}
-            >
+            {value && (
+                <X
+                    className={
+                        'absolute top-4.5 right-14 h-5 w-5 text-muted-foreground cursor-pointer hover:opacity-75 transition'
+                    }
+                    onClick={onClear}
+                />
+            )}
+            <Button type="submit" variant={'secondary'} size="sm" className={'rounded-l-none'}>
                 <SearchIcon className={'h-5 w-5 text-muted-foreground'} />
             </Button>
         </form>
