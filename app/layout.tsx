@@ -5,6 +5,7 @@ import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { ReactNode } from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from 'sonner'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -32,6 +33,7 @@ export default function RootLayout({
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                     <ThemeProvider attribute="class" forcedTheme="dark" storageKey="gamehub-theme">
                         {children}
+                        <Toaster theme="light" position="bottom-center" />
                     </ThemeProvider>
                 </body>
             </html>
