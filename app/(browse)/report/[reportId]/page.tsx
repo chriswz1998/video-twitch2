@@ -6,8 +6,11 @@ import { BarChartComponent } from '@/app/(browse)/report/[reportId]/_components/
 import { LineChartComponent } from '@/app/(browse)/report/[reportId]/_components/line-chart-component'
 import { ChartWrapper } from '@/app/(browse)/report/[reportId]/_components/chart-wrapper'
 
-const ReportId = async ({ params }: { params: { reportId: string } }) => {
-    const analysis = await getAnalyticsById(params.reportId)
+type Params = Promise<{ reportId: string }>
+
+const ReportId = async ({ params }: { params: Params }) => {
+    const { reportId } = await params
+    const analysis = await getAnalyticsById(reportId)
 
     return (
         <div className="p-6 max-w-5xl mx-auto">
