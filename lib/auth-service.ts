@@ -1,3 +1,5 @@
+'use server'
+
 import { db } from '@/lib/db'
 import { currentUser } from '@clerk/nextjs/server'
 
@@ -37,5 +39,5 @@ export const getSelfByUsername = async (username: string) => {
         throw new Error('unauthorized')
     }
 
-    return user
+    return user ? user : null
 }

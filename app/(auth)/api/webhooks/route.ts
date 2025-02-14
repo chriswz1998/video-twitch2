@@ -7,7 +7,9 @@ export async function POST(req: Request) {
     const SIGNING_SECRET = process.env.SIGNING_SECRET
 
     if (!SIGNING_SECRET) {
-        throw new Error('Error: Please add SIGNING_SECRET from Clerk Dashboard to .env or .env.local')
+        throw new Error(
+            'Error: Please add SIGNING_SECRET from Clerk Dashboard to .env or .env.local'
+        )
     }
 
     // Create new Svix instance with secret
@@ -50,12 +52,16 @@ export async function POST(req: Request) {
     // For this guide, log payload to console
     const eventType = evt.type
     if (eventType === 'user.created') {
-        console.log('1=created')
         await db.user.create({
             data: {
                 externalUserId: payload.data.id,
                 username: payload.data.username,
-                imageUrl: payload.data.image_url
+                imageUrl: payload.data.image_url,
+                stream: {
+                    create: {
+                        name: `${payload.data.username}'s stream`
+                    }
+                }
             }
         })
     }
